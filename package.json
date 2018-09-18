@@ -1,0 +1,80 @@
+{
+  "name": "electron-boilerplate",
+  "productName": "Electron Boilerplate",
+  "version": "0.0.1",
+  "description": "Electron Boilerplate",
+  "main": "src/js/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist:mac": "build -m",
+    "dist:win": "build -w",
+    "dist:linux": "build -l",
+    "dist": "build -mwl",
+    "postinstall": "npm install grpc --runtime=electron --target=2.0.5",
+    "reveal:data": "open ~/Library/Application\\ Support/Script\\ Assistant"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wonderunit/script-assistant.git"
+  },
+  "keywords": [
+    "fountain",
+    "script",
+    "screenplay"
+  ],
+  "author": "Wonder Unit Inc.",
+  "build": {
+    "asar": true,
+    "appId": "com.wonderunit.electron-boilerplate",
+    "compression": "maximum",
+    "files": [
+      "**/*",
+      "!*.md",
+      "!DEVELOPERS.md",
+      "!README.md",
+      "!notes",
+      "!test"
+    ],
+    "mac": {
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "icon": "build/icon.ico"
+    },
+    "dmg": {
+      "background": "build/background.png",
+      "icon": "build/icon.icns",
+      "iconSize": 140,
+      "contents": [
+        {
+          "x": 120,
+          "y": 250
+        },
+        {
+          "x": 420,
+          "y": 250,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+      "category": "Graphics"
+    },
+    "nsis": {
+      "perMachine": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "devDependencies": {
+    "electron": "2.0.9",
+    "electron-builder": "20.28.4"
+  },
+  "dependencies": {
+    "electron-is-dev": "^0.3.0",
+    "electron-updater": "^3.0.3",
+    "electron-util": "^0.9.0"
+  }
+}
